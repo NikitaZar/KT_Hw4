@@ -1,4 +1,5 @@
 class VkMoneyTransaction {
+
     companion object {
 
         private const val MAESTRO_COMMISSION_UNDER_LIMIT_PERCENT = 0.0
@@ -11,6 +12,7 @@ class VkMoneyTransaction {
 
         private const val KOP_PER_RUB = 1000L
 
+
         private fun rubToKop(amount: Long): Long {
             return amount * KOP_PER_RUB
         }
@@ -19,9 +21,10 @@ class VkMoneyTransaction {
             return amount / KOP_PER_RUB
         }
 
-        private fun calcCommission(srcAccount: MoneyAccount, transactionAmount: Long): Long {
+        fun calcCommission(srcAccount: MoneyAccount, transactionAmount: Long): Long {
 
             val accountType = srcAccount.getAccountType()
+            srcAccount.setCurTransaction(transactionAmount)
             val transactionKop = rubToKop(transactionAmount)
             val transactionKopVisa = transactionKop * VISA_COMMISSION_PERCENT / 100
             val visaCommissionMinimalKop = rubToKop(VISA_COMMISSION_MINIMAL)
@@ -53,6 +56,5 @@ class VkMoneyTransaction {
             println("Перевод с карты ${srcAccount.getAccountType()} на сумму $transactionAmount руб.")
             println("Комиссия по переводу: $commission руб. \n")
         }
-
     }
 }

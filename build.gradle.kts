@@ -14,11 +14,13 @@ repositories {
 }
 
 dependencies {
+    implementation("junit:junit:4.13.1")
     testImplementation(kotlin("test"))
 }
 
 tasks.test {
     useJUnit()
+    finalizedBy(tasks.jacocoTestReport)
 }
 
 tasks.withType<KotlinCompile>() {

@@ -1,4 +1,5 @@
 fun main() {
+
     val mastercardAccount = MoneyAccount(AccountTypes.MASTERCARD)
     VkMoneyTransaction.printCommission(mastercardAccount, 1000)
     VkMoneyTransaction.printCommission(mastercardAccount, 74_001)
