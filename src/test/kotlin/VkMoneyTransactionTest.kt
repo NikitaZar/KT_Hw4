@@ -62,6 +62,6 @@ class VkMoneyTransactionTest {
 
         //Commission
         var transaction: Long = 10_000_000L
-        assertEquals(1, VkMoneyTransaction.calcCommission(srcAccount, transaction))
+        assertEquals(0, VkMoneyTransaction.calcCommission(srcAccount, transaction))
     }
 }
